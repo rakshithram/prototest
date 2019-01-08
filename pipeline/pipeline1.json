@@ -18,7 +18,8 @@
 						"recursive": true
 					},
 					"sink": {
-						"type": "BlobSink"
+						"type": "BlobSink",
+						"copyBehavior": "MergeFiles"
 					},
 					"enableStaging": false,
 					"dataIntegrationUnits": 0
