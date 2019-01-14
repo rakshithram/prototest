@@ -1,0 +1,27 @@
+{
+	"name": "srcblob",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "srclinkedservice",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [
+			"source"
+		],
+		"type": "AzureBlob",
+		"typeProperties": {
+			"format": {
+				"type": "TextFormat",
+				"columnDelimiter": ",",
+				"rowDelimiter": "",
+				"nullValue": "\\N",
+				"treatEmptyAsNull": true,
+				"skipLineCount": 0,
+				"firstRowAsHeader": false
+			},
+			"fileName": "AccessBotOriginal.txt",
+			"folderPath": "devrepo"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
