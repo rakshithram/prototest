@@ -6,30 +6,6 @@
 			"type": "string",
 			"metadata": "Data Factory Name",
 			"defaultValue": "devopstestdf"
-		},
-		"srclinkedservice_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'srclinkedservice'"
-		},
-		"tgtlinkedservice_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'tgtlinkedservice'"
-		},
-		"srcblob_properties_typeProperties_fileName": {
-			"type": "string",
-			"defaultValue": "AccessBotOriginal.txt"
-		},
-		"srcblob_properties_typeProperties_folderPath": {
-			"type": "string",
-			"defaultValue": "devrepo"
-		},
-		"tgtblob_properties_typeProperties_fileName": {
-			"type": "string",
-			"defaultValue": ""
-		},
-		"tgtblob_properties_typeProperties_folderPath": {
-			"type": "string",
-			"defaultValue": "qarepo"
 		}
 	},
 	"variables": {
@@ -45,7 +21,6 @@
 					{
 						"name": "Copy Data1",
 						"type": "Copy",
-						"dependsOn": [],
 						"policy": {
 							"timeout": "7.00:00:00",
 							"retry": 0,
@@ -53,7 +28,6 @@
 							"secureOutput": false,
 							"secureInput": false
 						},
-						"userProperties": [],
 						"typeProperties": {
 							"source": {
 								"type": "BlobSource",
@@ -68,20 +42,17 @@
 						"inputs": [
 							{
 								"referenceName": "srcblob",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "tgtblob",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					}
-				],
-				"annotations": []
+				]
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/srcblob')]",
@@ -97,7 +68,6 @@
 					{
 						"name": "Copy Data1",
 						"type": "Copy",
-						"dependsOn": [],
 						"policy": {
 							"timeout": "7.00:00:00",
 							"retry": 0,
@@ -105,7 +75,6 @@
 							"secureOutput": false,
 							"secureInput": false
 						},
-						"userProperties": [],
 						"typeProperties": {
 							"source": {
 								"type": "BlobSource",
@@ -120,20 +89,17 @@
 						"inputs": [
 							{
 								"referenceName": "srcblob",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "tgtblob",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					}
-				],
-				"annotations": []
+				]
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/srcblob')]",
@@ -149,7 +115,6 @@
 					{
 						"name": "Copy Data1",
 						"type": "Copy",
-						"dependsOn": [],
 						"policy": {
 							"timeout": "7.00:00:00",
 							"retry": 0,
@@ -157,7 +122,6 @@
 							"secureOutput": false,
 							"secureInput": false
 						},
-						"userProperties": [],
 						"typeProperties": {
 							"source": {
 								"type": "BlobSource",
@@ -172,20 +136,17 @@
 						"inputs": [
 							{
 								"referenceName": "srcblob",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "tgtblob",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					}
-				],
-				"annotations": []
+				]
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/srcblob')]",
@@ -201,7 +162,6 @@
 					{
 						"name": "Copy Data1",
 						"type": "Copy",
-						"dependsOn": [],
 						"policy": {
 							"timeout": "7.00:00:00",
 							"retry": 0,
@@ -209,7 +169,6 @@
 							"secureOutput": false,
 							"secureInput": false
 						},
-						"userProperties": [],
 						"typeProperties": {
 							"source": {
 								"type": "BlobSource",
@@ -224,20 +183,17 @@
 						"inputs": [
 							{
 								"referenceName": "srcblob",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "tgtblob",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					}
-				],
-				"annotations": []
+				]
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/srcblob')]",
@@ -267,13 +223,10 @@
 						"skipLineCount": 0,
 						"firstRowAsHeader": false
 					},
-					"fileName": "[parameters('srcblob_properties_typeProperties_fileName')]",
-					"folderPath": "[parameters('srcblob_properties_typeProperties_folderPath')]"
+					"fileName": "AccessBotOriginal.txt",
+					"folderPath": "devrepo"
 				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/srclinkedservice')]"
-			]
+			}
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/tgtblob')]",
@@ -284,7 +237,6 @@
 					"referenceName": "tgtlinkedservice",
 					"type": "LinkedServiceReference"
 				},
-				"annotations": [],
 				"type": "AzureBlob",
 				"typeProperties": {
 					"format": {
@@ -296,39 +248,10 @@
 						"skipLineCount": 0,
 						"firstRowAsHeader": false
 					},
-					"fileName": "[parameters('tgtblob_properties_typeProperties_fileName')]",
-					"folderPath": "[parameters('tgtblob_properties_typeProperties_folderPath')]"
+					"fileName": "",
+					"folderPath": "qarepo"
 				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/tgtlinkedservice')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/srclinkedservice')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobStorage",
-				"typeProperties": {
-					"connectionString": "[parameters('srclinkedservice_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/tgtlinkedservice')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobStorage",
-				"typeProperties": {
-					"connectionString": "[parameters('tgtlinkedservice_connectionString')]"
-				}
-			},
-			"dependsOn": []
+			}
 		}
 	]
 }
